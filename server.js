@@ -16,7 +16,7 @@ import cookieParser from 'cookie-parser';
 // hello
 // db and authenticateUser
 import connectDB from './db/connect.js';
-
+// some comment
 // routers
 import authRouter from './routes/authRoutes.js';
 import jobsRouter from './routes/jobsRoutes.js';
