@@ -95,7 +95,7 @@ const updateUser = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ user, /* token, */ location: user.location });
 };
-
+// commit
 const getCurrentUser = async (req, res) => {
   const user = await User.findOne({ _id: req.user.userId });
   res.status(StatusCodes.OK).json({ user, location: user.location });
