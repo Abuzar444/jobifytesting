@@ -66,8 +66,6 @@ const updateUser = async (req, res) => {
   await user.save();
   const token = user.createJWT();
   attachCookies({ res, token });
-  // console.log(req.user);
-  // res.send('updateUser');
   res
     .status(StatusCodes.OK)
     .json({ user, /* token, */ location: user.location });
