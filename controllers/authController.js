@@ -109,6 +109,5 @@ const logout = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: 'user logged out!' });
 };
 
-// commit
 
 export { register, login, updateUser, getCurrentUser, logout };
