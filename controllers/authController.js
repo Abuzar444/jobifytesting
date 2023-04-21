@@ -39,7 +39,7 @@ const login = async (req, res) => {
   if (!user) {
     throw new UnAuthenticatedError('Invalid Credentials');
   }
-  // console.log(user);
+
   const isPasswordCorrect = await user.comparePassword(password);
   if (!isPasswordCorrect) {
     throw new UnAuthenticatedError('Invalid Credentials');
@@ -48,18 +48,7 @@ const login = async (req, res) => {
   attachCookies({ res, token });
   user.password = undefined;
 
-  // first cookie
-  const oneDay = 1000 * 60 * 60 * 24;
-  res.cookie('token', token, {
-    httpOnly: true,
-    expires: new Date(Date.now() + oneDay),
-    secure: process.env.NODE.ENV === 'production',
-  });
-  // res.status(200)
-  res
-    .status(StatusCodes.OK)
-    .json({ user, /* token, */ location: user.location });
-  // res.send('login user');
+  res.status(StatusCodes.OK).json({ user, location: user.location });
 };
 
 const updateUser = async (req, res) => {
